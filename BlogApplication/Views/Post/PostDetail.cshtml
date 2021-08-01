@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Post
+@section CssSection{
+    <link rel="stylesheet" href="~/post.css">
+}
+<article class="blog-post px-3 py-5 p-md-5">
+    <div class="container single-col-max-width">
+        <header class="blog-post-header">
+            <h2 class="title mb-2">@Model.Title</h2>
+            <div class="meta mb-3"><h6><span class="date">@Model.Created</span><span class="time">@((int)(DateTime.Now - Model.Created).TotalDays) days ago</span></h6></div>
+        </header>
+        @Html.Raw(Model.FullPost)
+    </div><!--//container-->
+</article>

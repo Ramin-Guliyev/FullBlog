@@ -1,0 +1,54 @@
+﻿@model BlogApplication.Models.PostDto
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin - Login Page</title>
+    <link rel="stylesheet" href="~/assets/plugins/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+    <section class="cta-section theme-bg-light py-5">
+        <div class="container text-center single-col-max-width">
+            <div class="single-form-max-width pt-3 mx-auto">
+                <form asp-controller="Ramin" asp-action="CreatePost" enctype="multipart/form-data" class="row g-2 g-lg-2 align-items-center">
+
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="Title">Post Title</label>
+                        <input type="text" asp-for="Title" class="form-control" placeholder="Enter Title">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="Description">Post Description : Max 230 letter </label>
+                         <textarea asp-for="Description"  class="form-control"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="FormFile">Image : Please choose 300 x 300 </label>
+                        <input type="file" asp-for="FormFile" class="form-control" placeholder="Enter Url">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="FullPost">Full Post Select images 800 x 400</label>
+                        <textarea asp-for="FullPost" id="textareaContent" class="form-control"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Thank you for your post</button>
+                    </div>
+                </form><!--//signup-form-->
+            </div><!--//single-form-max-width-->
+        </div><!--//container-->
+    </section>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/ckeditor2/ckeditor.js"></script>
+    <script>
+        $(document).ready(function(){
+            CKEDITOR.replace('textareaContent',{
+            height: 400,
+            filebrowserUploadUrl:'/upload_ckeditor'
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Post>
+
+@foreach (var item in Model)
+{
+    <div class="item mb-5">
+        <div class="row g-3 g-xl-0">
+
+            <div class="col-2 col-xl-3">
+                <img class="img-fluid post-thumb " src="@item.ImagePath" alt="image">
+            </div>
+
+            <div class="col">
+                <h3 class="title mb-1"><a class="text-link" href="/post/PostDetail/@item.Id">@item.Title</a></h3>
+                <div class="meta mb-1"><span class="date">Published @item.Created.ToString("dd/MM/yyyy")</span><span class="time">@((int)(DateTime.Now - item.Created).TotalDays) days ago</span></div>
+                <div class="intro">@item.Description</div>
+                <a class="text-link" href="/post/PostDetail/@item.Id">Read more &rarr;</a>
+            </div><!--//col-->
+
+    </div><!--//row-->
+</div><!--//item-->
+}

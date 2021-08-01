@@ -1,0 +1,64 @@
+﻿@{
+    Layout = null;
+}
+@model IEnumerable<Post>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin - Main</title>
+    <link rel="stylesheet" href="~/assets/plugins/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+<br />
+<a href="/ramin/createpost" class="link-info">Create New  Post</a>
+<br />
+<br />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Created</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Send Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Title</td>
+                    <td>@item.Created</td>
+                    <td>
+                        <form asp-action="UpdatePost" asp-controller="Ramin">
+                            <input type="hidden" id="id" name="id" value=@item.Id>
+                            <button type="submit" class="btn btn-warning">Update</button>
+                        </form>
+                        
+                    </td>
+
+                    <td>
+                        <form asp-action="Delete" asp-controller="Ramin">
+                            <input type="hidden" id="id" name="id" value=@item.Id>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form asp-action="SendEmail" asp-controller="Ramin">
+                            <input type="hidden" id="id" name="id" value=@item.Id>
+                            <button type="submit" class="btn btn-info">Send</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
