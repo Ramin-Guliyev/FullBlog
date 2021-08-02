@@ -1,4 +1,4 @@
-#  ASP.NET Core 5 MVC - FullBlog 
+#  ASP.NET MVC - FullBlog 
 <br> 
 <br> 
 
